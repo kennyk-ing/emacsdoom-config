@@ -79,3 +79,5 @@
         '(("d" "Default" plain "%?"
            :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+date: %U\n")
            :unnarrowed t))))
+
+(add-to-list 'default-frame-alist '(alpha-background . 98))
