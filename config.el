@@ -81,3 +81,6 @@
            :unnarrowed t))))
 
 (add-to-list 'default-frame-alist '(alpha-background . 98))
+
+(setq org-pretty-entities t)
+(setq org-preview-latex-default-process 'dvisvgm)
