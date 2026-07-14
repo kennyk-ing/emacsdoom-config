@@ -84,3 +84,10 @@
 
 (setq org-pretty-entities t)
 (setq org-preview-latex-default-process 'dvisvgm)
+
+;; Spell checker
+;; Tell Emacs to use aspell instead of the default ispell
+(setq ispell-program-name "aspell")
+
+;; Configure aspell to use the English dictionary you installed on NixOS
+(setq ispell-extra-args '("--sug-mode=ultra" "--lang=en_US"))
