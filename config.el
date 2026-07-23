@@ -85,9 +85,17 @@
 (setq org-pretty-entities t)
 (setq org-preview-latex-default-process 'dvisvgm)
 
-;; Spell checker
-;; Tell Emacs to use aspell instead of the default ispell
+;; --- SPELL CHECKER ---
+(after! ispell
 (setq ispell-program-name "aspell")
-
-;; Configure aspell to use the English dictionary you installed on NixOS
-(setq ispell-extra-args '("--sug-mode=ultra" "--lang=en_US"))
+;; Force Emacs and Aspell to use the exact same language string
+(setq ispell-dictionary "en_US")
+;; Explicitly define the personal dictionary file so they cannot desync
+(setq ispell-personal-dictionary (expand-file-name "~/.aspell.en_US.pws"))
+;; Pass basic args (letting ispell-dictionary handle the language flag)
+(setq ispell-extra-args '("--sug-mode=ultra"
+                          "--add-extra-dicts=en_US-science.rws"
+                          "--add-extra-dicts=en-computers.rws")))
+(after! flyspell
+  ;; Disable the buggy bulk-region checker that causes desyncs
+  (setq flyspell-large-region nil))
